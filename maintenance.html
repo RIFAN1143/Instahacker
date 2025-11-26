@@ -3,41 +3,268 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Maintenance</title>
+  <title>Maintenance - Instagram</title>
+  <link rel="shortcut icon" href="./instagram.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
       color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid #262626;
+    }
+
+    .logo {
+      font-family: 'Billabong', cursive;
+      font-size: 40px;
+      color: #fff;
+      text-decoration: none;
     }
 
     .maintenance-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: 0 auto;
       text-align: center;
-      padding: 40px;
-      max-width: 600px;
     }
 
-    .maintenance-container h1 {
+    .maintenance-icon {
+      font-size: 80px;
+      color: #3897f0;
+      margin-bottom: 30px;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    h1 {
       font-size: 36px;
       margin-bottom: 20px;
       color: #fff;
     }
 
-    .maintenance-container p {
+    .maintenance-message {
       font-size: 18px;
       color: #aaa;
       margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    .countdown-container {
+      background: #121212;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 30px;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .countdown-title {
+      font-size: 16px;
+      margin-bottom: 15px;
+      color: #bbb;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .countdown-value {
+      font-size: 30px;
+      font-weight: bold;
+      color: #3897f0;
+      line-height: 1;
+    }
+
+    .countdown-label {
+      font-size: 12px;
+      color: #888;
+      margin-top: 5px;
+    }
+
+    .progress-container {
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 30px;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background-color: #262626;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress {
+      height: 100%;
+      background-color: #3897f0;
+      border-radius: 4px;
+      width: 65%;
+      animation: progress-animation 2s ease-in-out;
+    }
+
+    @keyframes progress-animation {
+      0% { width: 0%; }
+    }
+
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .notification-form {
+      background: #121212;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 30px;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .notification-title {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    .notification-input-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .notification-input {
+      flex: 1;
+      padding: 12px 15px;
+      border: 1px solid #262626;
+      border-radius: 8px;
+      background: #000;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .notification-button {
+      padding: 12px 20px;
+      background-color: #3897f0;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .notification-button:hover {
+      background-color: #318ce7;
+    }
+
+    .faq-section {
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 30px;
+    }
+
+    .faq-title {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    .faq-item {
+      background: #121212;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 15px;
+      text-align: left;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-question i {
+      transition: transform 0.3s;
+    }
+
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      text-align: left;
+      padding: 0 15px;
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      padding: 0 15px 15px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #121212;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .social-link:hover {
+      background-color: #262626;
     }
 
     .back-button {
       display: inline-block;
-      padding: 10px 20px;
+      padding: 12px 24px;
       background-color: #3897f0;
       color: white;
       text-decoration: none;
@@ -49,13 +276,232 @@
     .back-button:hover {
       background-color: #318ce7;
     }
+
+    footer {
+      padding: 20px;
+      text-align: center;
+      border-top: 1px solid #262626;
+      font-size: 12px;
+      color: #888;
+    }
+
+    .notification-message {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 8px;
+      background-color: #121212;
+      color: #3897f0;
+      display: none;
+    }
+
+    /* Mobile Responsive */
+    @media screen and (max-width: 768px) {
+      .maintenance-container {
+        padding: 20px 15px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .maintenance-message {
+        font-size: 16px;
+      }
+
+      .countdown {
+        gap: 10px;
+      }
+
+      .countdown-value {
+        font-size: 24px;
+      }
+
+      .notification-input-group {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="maintenance-container">
+  <header>
+    <a href="index.html" class="logo">Instagram</a>
+  </header>
+
+  <main class="maintenance-container">
+    <div class="maintenance-icon">
+      <i class="fas fa-tools"></i>
+    </div>
+
     <h1>This page is under maintenance</h1>
-    <p>We're working to improve your experience. Please check back later.</p>
+    <p class="maintenance-message">
+      We're working to improve your experience. Our team is performing scheduled maintenance to enhance our services. We apologize for any inconvenience.
+    </p>
+
+    <div class="countdown-container">
+      <div class="countdown-title">Estimated time remaining</div>
+      <div class="countdown">
+        <div class="countdown-item">
+          <div class="countdown-value" id="hours">22</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="minutes">55</div>
+          <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="seconds">00</div>
+          <div class="countdown-label">Seconds</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+      <div class="progress-text">
+        <span>Maintenance Progress</span>
+        <span>65%</span>
+      </div>
+    </div>
+
+    <div class="notification-form">
+      <div class="notification-title">Get notified when we're back</div>
+      <form id="notification-form">
+        <div class="notification-input-group">
+          <input type="email" class="notification-input" placeholder="Enter your email address" required>
+          <button type="submit" class="notification-button">Notify Me</button>
+        </div>
+      </form>
+      <div class="notification-message" id="notification-message">
+        Thank you! We'll notify you as soon as we're back online.
+      </div>
+    </div>
+
+    <div class="faq-section">
+      <div class="faq-title">Frequently Asked Questions</div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          Why is the site under maintenance?
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          We're performing essential updates to improve performance, security, and add new features to enhance your experience.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Will my data be affected?
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          No, all your data is completely safe. This maintenance only affects our service availability and not your account information.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Can I still access my account?
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          During this maintenance window, some features may be temporarily unavailable. We recommend waiting until maintenance is complete for the best experience.
+        </div>
+      </div>
+    </div>
+
+    <div class="social-links">
+      <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+
     <a href="index.html" class="back-button">Back to Login</a>
-  </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Instagram from Meta</p>
+  </footer>
+
+  <script>
+    // Initialize countdown values
+    let hours = 22;
+    let minutes = 55;
+    let seconds = 0;
+    
+    // Update the display with initial values
+    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    
+    // Countdown Timer
+    function updateCountdown() {
+      seconds--;
+      
+      if (seconds < 0) {
+        seconds = 59;
+        minutes--;
+        
+        if (minutes < 0) {
+          minutes = 59;
+          hours--;
+          
+          if (hours < 0) {
+            // Reset when countdown reaches zero
+            hours = 22;
+            minutes = 55;
+            seconds = 0;
+          }
+        }
+      }
+      
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    }
+    
+    setInterval(updateCountdown, 1000);
+    
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      
+      question.addEventListener('click', () => {
+        // Close all other items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+          }
+        });
+        
+        // Toggle current item
+        item.classList.toggle('active');
+      });
+    });
+    
+    // Notification Form
+    const notificationForm = document.getElementById('notification-form');
+    const notificationMessage = document.getElementById('notification-message');
+    
+    notificationForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Show success message
+      notificationMessage.style.display = 'block';
+      
+      // Reset form
+      notificationForm.reset();
+      
+      // Hide message after 5 seconds
+      setTimeout(() => {
+        notificationMessage.style.display = 'none';
+      }, 5000);
+    });
+  </script>
 </body>
 </html>
